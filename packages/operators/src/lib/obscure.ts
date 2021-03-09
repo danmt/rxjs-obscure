@@ -1,5 +1,5 @@
-import { Observable, of } from 'rxjs';
-import { map, mergeMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export interface ObscureConfig {
   skipUntil: number;
@@ -17,6 +17,12 @@ export const transformFactory = (config: ObscureConfig) => (
   index: number
 ) => acc + (index <= config.skipUntil ? char : config.placeholder);
 ('');
+
+const transformEmailFactory = (config: ObscureConfig) => (value: string) => {
+  const [username, domain] = value.split('@');
+  const obscuredUsername = username.split('').reduce(transformFactory(config));
+  return `${obscuredUsername}@${domain}`;
+};
 
 export const obscureWith = (
   transformFunction: (
@@ -55,25 +61,9 @@ export function obscureEmail(
 export function obscureEmail(config?: ObscureConfig) {
   if (config) {
     return (source: Observable<string>) =>
-      source.pipe(
-        mergeMap((value) => {
-          const [username, domain] = value.split('@');
-          return of(username).pipe(
-            obscure(config),
-            map((obscuredUsername) => `${obscuredUsername}@${domain}`)
-          );
-        })
-      );
+      source.pipe(map(transformEmailFactory({ ...defaultConfig, ...config })));
   } else {
     return (source: Observable<string>) =>
-      source.pipe(
-        mergeMap((value) => {
-          const [username, domain] = value.split('@');
-          return of(username).pipe(
-            obscure(),
-            map((obscuredUsername) => `${obscuredUsername}@${domain}`)
-          );
-        })
-      );
+      source.pipe(map(transformEmailFactory(defaultConfig)));
   }
 }
