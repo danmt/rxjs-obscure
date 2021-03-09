@@ -1,10 +1,36 @@
 {
-  
-  
   "version": 2,
-  
-  "projects": {},
-  "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+  "projects": {
+    "operators": {
+      "root": "packages/operators",
+      "sourceRoot": "packages/operators/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["packages/operators/**/*.ts"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/operators"],
+          "options": {
+            "jestConfig": "packages/operators/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/operators",
+            "tsConfig": "packages/operators/tsconfig.lib.json",
+            "packageJson": "packages/operators/package.json",
+            "main": "packages/operators/src/index.ts",
+            "assets": ["packages/operators/*.md"]
+          }
+        }
+      }
+    }
+  },
+  "cli": { "defaultCollection": "@nrwl/workspace" }
 }
