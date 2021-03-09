@@ -77,10 +77,3 @@ export function obscureEmail(config?: ObscureConfig) {
       );
   }
 }
-
-of('hola mundo').pipe(obscure());
-of('hola mundo').pipe(obscure({ skipUntil: 2, placeholder: '-' }));
-of('danielartr@gmail.com').pipe(obscureEmail());
-of('danielartr@gmail.com').pipe(
-  obscureEmail({ skipUntil: 2, placeholder: '-' })
-);
