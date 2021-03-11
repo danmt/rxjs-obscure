@@ -1,16 +1,24 @@
 name: Release
-
 on:
-  pull_request:
-    types: closed
-
+  push:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Tag
-        uses: K-Phoen/semver-release-action@master
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
         with:
-          release_branch: main
+          node-version: '12.x'
+      - name: NPM install, lint, build, test and release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm ci
+          npm run affected:lint -- --base=origin/main
+          npm run affected:build -- --base=origin/main
+          npm run affected:test -- --base=origin/main
+          npx semantic-release --debug
