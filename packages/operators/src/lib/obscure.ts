@@ -6,21 +6,20 @@ export interface ObscureConfig {
   placeholder: string;
 }
 
-export const defaultConfig = {
+const defaultConfig = {
   skipUntil: -1,
   placeholder: '*',
 };
 
-export const transformFactory = (config: ObscureConfig) => (
-  acc: string,
-  char: string,
+const reducer = (config: ObscureConfig) => (
+  state: string,
+  curr: string,
   index: number
-) => acc + (index <= config.skipUntil ? char : config.placeholder);
-('');
+) => state + (index <= config.skipUntil ? curr : config.placeholder);
 
-const transformEmailFactory = (config: ObscureConfig) => (value: string) => {
+const transformEmail = (config: ObscureConfig) => (value: string) => {
   const [username, domain] = value.split('@');
-  const obscuredUsername = username.split('').reduce(transformFactory(config));
+  const obscuredUsername = username.split('').reduce(reducer(config));
   return `${obscuredUsername}@${domain}`;
 };
 
@@ -40,9 +39,7 @@ export function obscure(config?: ObscureConfig) {
   return (source: Observable<string>) =>
     source.pipe(
       obscureWith(
-        transformFactory(
-          !config ? defaultConfig : { ...defaultConfig, ...config }
-        )
+        reducer(!config ? defaultConfig : { ...defaultConfig, ...config })
       )
     );
 }
@@ -51,7 +48,7 @@ export function obscureEmail(config?: ObscureConfig) {
   return (source: Observable<string>) =>
     source.pipe(
       map(
-        transformEmailFactory(
+        transformEmail(
           !config ? defaultConfig : { ...defaultConfig, ...config }
         )
       )
