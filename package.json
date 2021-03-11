@@ -43,6 +43,8 @@
     "@nrwl/node": "^11.4.0",
     "@nrwl/tao": "11.4.0",
     "@nrwl/workspace": "11.4.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "@types/jest": "26.0.8",
     "@types/node": "12.12.38",
     "@typescript-eslint/eslint-plugin": "4.3.0",
