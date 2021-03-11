@@ -2,7 +2,7 @@ name: Release
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,13 +12,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
+      - name: 'Git fetch for affected commands'
+        run: git fetch --no-tags --prune --depth=5 origin main
       - name: NPM install, lint, build, test and release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npm ci
-          npm run affected:lint -- --base=origin/main
-          npm run affected:build -- --base=origin/main
-          npm run affected:test -- --base=origin/main
+          npm run affected:lint -- --base=origin/master
+          npm run affected:build -- --base=origin/master
+          npm run affected:test -- --base=origin/master
           npx semantic-release --debug
