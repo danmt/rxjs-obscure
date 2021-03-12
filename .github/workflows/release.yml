@@ -26,8 +26,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          npx semantic-release --debug
       - name: Bump package.json version
         run: |
           npm run bump -- "this.version='${{ steps.semantic.outputs.new_release_version }}'"
