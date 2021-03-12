@@ -1,3 +1,10 @@
+## [1.0.10](https://github.com/danmt/rxjs-obscure/compare/v1.0.9...v1.0.10) (2021-03-12)
+
+
+### Bug Fixes
+
+* trying to make it work ([a1d05d2](https://github.com/danmt/rxjs-obscure/commit/a1d05d27b910ea43e0f9cdcdf3959d78892eedcf))
+
 ## [1.0.9](https://github.com/danmt/rxjs-obscure/compare/v1.0.8...v1.0.9) (2021-03-12)
 
 
