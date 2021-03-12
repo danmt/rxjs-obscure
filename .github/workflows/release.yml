@@ -15,6 +15,7 @@ jobs:
       - name: 'Git fetch for affected commands'
         run: git fetch --no-tags --prune --depth=5 origin main
       - name: NPM install, lint, build, test and release
+        id: semantic-release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -24,3 +25,6 @@ jobs:
           npm run affected:build -- --base=origin/main
           npm run affected:test -- --base=origin/main
           npx semantic-release --debug
+      - name: Do something when a new release published
+        run: |
+          echo ${{ steps.semantic-release.outputs.version }}
