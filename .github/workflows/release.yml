@@ -36,6 +36,6 @@ jobs:
           npm run copy-readme
           npx nx run operators:build
           cd dist/packages/operators
-          npm publish
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
