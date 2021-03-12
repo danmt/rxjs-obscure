@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/danmt/rxjs-obscure/compare/v1.0.5...v1.0.6) (2021-03-12)
+
+
+### Bug Fixes
+
+* include publish in ci ([f07e1b0](https://github.com/danmt/rxjs-obscure/commit/f07e1b083c58393a5d6cce0561751c3e8c8bd9bb))
+
 ## [1.0.5](https://github.com/danmt/rxjs-obscure/compare/v1.0.4...v1.0.5) (2021-03-12)
 
 
