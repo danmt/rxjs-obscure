@@ -23,8 +23,8 @@ const transformEmail = (config: ObscureConfig) => (value: string) => {
   return `${obscuredUsername}@${domain}`;
 };
 
-export const obscureWith = (
-  transformFunction: (
+const obscureWith = (
+  reducerFunction: (
     previousValue: string,
     currentValue: string,
     currentIndex: number,
@@ -32,7 +32,7 @@ export const obscureWith = (
   ) => string
 ) => {
   return (source: Observable<string>) =>
-    source.pipe(map((value) => value.split('').reduce(transformFunction)));
+    source.pipe(map((value) => value.split('').reduce(reducerFunction)));
 };
 
 export function obscure(config?: ObscureConfig) {
