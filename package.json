@@ -32,7 +32,9 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "bump": "json -I -f package.json -e"
+    "bump": "json -I -f package.json -e",
+    "bump:operators": "json -I -f packages/operators/package.json -e",
+    "copy-readme": "cp README.md packages/operators/README.md"
   },
   "private": true,
   "dependencies": {},
