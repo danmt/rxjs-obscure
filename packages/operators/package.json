@@ -1,5 +1,13 @@
 {
   "name": "rxjs-obscure",
-  "version": "0.0.2",
-  "license": "MIT"
+  "version": "1.0.6",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danmt/rxjs-obscure"
+  },
+  "bugs": {
+    "url": "https://github.com/danmt/rxjs-obscure/issues"
+  },
+  "homepage": "https://github.com/danmt/rxjs-obscure#readme"
 }
