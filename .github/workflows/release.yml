@@ -35,3 +35,5 @@ jobs:
           npx nx run operators:build
           cd dist/packages/operators
           npm publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
