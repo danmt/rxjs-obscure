@@ -1,3 +1,11 @@
+## [1.0.9](https://github.com/danmt/rxjs-obscure/compare/v1.0.8...v1.0.9) (2021-03-12)
+
+
+### Bug Fixes
+
+* add npm token to npm install step ([b902d18](https://github.com/danmt/rxjs-obscure/commit/b902d181c15c13ec303e6055882c28e9febeb07c))
+* trying to solve npm publish ([2e531fa](https://github.com/danmt/rxjs-obscure/commit/2e531fa38c49390efb5f45ca9e29927c6f876e4d))
+
 ## [1.0.8](https://github.com/danmt/rxjs-obscure/compare/v1.0.7...v1.0.8) (2021-03-12)
 
 
