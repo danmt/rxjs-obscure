@@ -11,7 +11,7 @@ const defaultConfig = {
   placeholder: '*',
 };
 
-const reducer = (config: ObscureConfig) => (
+const createReducer = (config: ObscureConfig) => (
   state: string,
   curr: string,
   index: number
@@ -19,11 +19,11 @@ const reducer = (config: ObscureConfig) => (
 
 const transformEmail = (config: ObscureConfig) => (value: string) => {
   const [username, domain] = value.split('@');
-  const obscuredUsername = username.split('').reduce(reducer(config));
+  const obscuredUsername = username.split('').reduce(createReducer(config));
   return `${obscuredUsername}@${domain}`;
 };
 
-const obscureWith = (
+export const obscureWith = (
   reducerFunction: (
     previousValue: string,
     currentValue: string,
@@ -39,7 +39,7 @@ export function obscure(config?: ObscureConfig) {
   return (source: Observable<string>) =>
     source.pipe(
       obscureWith(
-        reducer(!config ? defaultConfig : { ...defaultConfig, ...config })
+        createReducer(!config ? defaultConfig : { ...defaultConfig, ...config })
       )
     );
 }
