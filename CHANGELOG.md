@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/danmt/rxjs-obscure/compare/v1.0.4...v1.0.5) (2021-03-12)
+
+
+### Bug Fixes
+
+* bump only if a new version is released ([3fde914](https://github.com/danmt/rxjs-obscure/commit/3fde9146fd5c6890109df389b6b65ea1f987e391))
+
 ## [1.0.4](https://github.com/danmt/rxjs-obscure/compare/v1.0.3...v1.0.4) (2021-03-12)
 
 
