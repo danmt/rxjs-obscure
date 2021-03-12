@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/danmt/rxjs-obscure/compare/v1.0.6...v1.0.7) (2021-03-12)
+
+
+### Bug Fixes
+
+* this is a bug just to trigger release ([5792345](https://github.com/danmt/rxjs-obscure/commit/5792345dd5aeb84ba7bac6321430f7823d9009a5))
+
 ## [1.0.6](https://github.com/danmt/rxjs-obscure/compare/v1.0.5...v1.0.6) (2021-03-12)
 
 
