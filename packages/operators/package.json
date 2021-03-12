@@ -9,5 +9,8 @@
   "bugs": {
     "url": "https://github.com/danmt/rxjs-obscure/issues"
   },
-  "homepage": "https://github.com/danmt/rxjs-obscure#readme"
+  "homepage": "https://github.com/danmt/rxjs-obscure#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
 }
